@@ -7,21 +7,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>동아리 커뮤니티</title>
-<!-- url 현재 경로가 freeboard 입니다. community가 아닙니다.  -->
-<link rel="stylesheet" href="css/boardlist.css?v=3"> <!-- url기준 -->
+<!-- url 현재 경로가 freeboard 입니다.community 가 아닙니다. -->
+<link rel="stylesheet" href="css/boardlist.css?v=3"><!-- url기준 -->
+<link rel="stylesheet" href="css/flexbox2.css?v=3">
 </head>
 <body>
+<%@ include file="../top.jsp" %>  <!-- ../는 현재 위치에서 한 단계 위 상위폴더 -->
+<section>
 <h3>동아리 커뮤니티</h3>
 <hr>
 <div style="margin:auto;">
 <ul id="main">
 	<li>
 		<ul  class="row">
-			<li>번호</li>   <!-- css child(1) -->
-			<li>제목</li>   <!-- css child(2) -->
-			<li>작성자</li>  <!-- css child(3) -->
-			<li>조회수</li>  <!-- css child(4) -->
-			<li>작성일</li>  <!-- css child(5) -->
+			<li>번호</li>
+			<li>제목</li>
+			<li>작성자</li>
+			<li>조회수</li>
+			<li>작성일</li>
 		</ul>
 	</li>
 	<c:set var="pno" value="${pageDto.currentPage}"/>
@@ -52,49 +55,46 @@
 </ul>
 <div style="margin:auto;">
  	Go!<a class="button" href="insert.do">글쓰기</a>&nbsp;&nbsp;
- 	<a class="button" href="${pageContext.request.contextPath }">홈 : ${pageContext.request.contextPath } 
+ 	<a class="button" href="${pageContext.request.contextPath }">홈 : ${pageContext.request.contextPath }
  	</a>&nbsp;&nbsp;&nbsp;작성글 총 개수 : ${pageDto.totalCount }
-
 </div>
-<!-- 글목록 페이지 처리 : Pagination -->
+<!-- 글목록 페이지 처리 : pagination -->
 <div style="text-align: center;">
 <hr>
-<!-- href="listAction.jsp?page=1" 요청 url 현재와 같을 때 생략하고 ? 뒤에 파라미터 값만 변경합니다. -->
-	
+<!--  href="listAction.jsp?page=1"  요청 url 현재와 같을때 생략하고 ? 뒤에 파라미터값만 변경합니다. -->
 	<c:if test="${pageDto.startPage !=1 }">
 		<a class="pagenum" href="?page=1">&lt;&lt;</a>
-		<a class="pagenum" href="?page=${pageDto.startPage-1 }">&lt;</a>
-		<!-- 현재페이지를 startPage값에서 -1로 변경하면 요청이 변경되면서 자동계산.-->
+		<a class="pagenum" href="?page=${pageDto.startPage-1}">&lt;</a>  
+		<!-- 현재페이지를 startPage값에서 -1 로 변경하면 요청이 변경되면서 자동계산. -->
 	</c:if>
 	
 	<c:forEach var="i" begin="${pageDto.startPage }" end="${pageDto.endPage }">
-		<a class="pagenum
-		<c:if test="${pageDto.currentPage == i }">current</c:if>
-		"href="?page=${i}">${i }</a>
+		<a class="pagenum  
+			<c:if test="${pageDto.currentPage == i }">current</c:if>
+		" href="?page=${i }">${i }</a>
 	</c:forEach>
 	
 	<c:if test="${pageDto.endPage !=pageDto.totalPage }">
-		<a class="pagenum" href="?page=${pageDto.endPage+1}">&gt;</a>  <!-- startPage를 현재 startPage +10-->
-		<!-- 현재페이지를 endPage값에서 +1로 변경하면 요청이 변경되면서 자동계산.-->
-		<a class="pagenum" href="?page=${pageDto.totalPage }">&gt;&gt;</a>  <!-- 마지막페이지 -->
+		<a class="pagenum" href="?page=${pageDto.endPage+1}">&gt;</a> 
+	 	<!-- 현재페이지를 endPage값에서 +1 로 변경하면 요청이 변경되면서 자동계산. -->
+	 
+		<a class="pagenum" href="?page=${pageDto.totalPage }">&gt;&gt;</a>  <!-- 마지막페이지  -->
 	</c:if>
-</div>
-
-
+</div>	
+</section>
+<%@ include file="../bottom.jsp" %>
 </div>
 </body>
 </html>
 
 
-
-<!--request.contextPath : request.getcontextPath 메소드 실행 결과와 동일.
-		  listAction.jsp 에서 pageContext 객체를 사용하여 listCiew.jsp 로 요청이 전달되었기 때문에
-		  pageContext.requets 로 합니다.
-		  
-		  pageContext 객체(jsp내장객체) : jsp파일(jsp페이지) 1개와 대응되는 객체.
-		  -->
-
-
+<!-- request.contextPath : request.getContextPath 메소드 실행 결과와 동일. 
+		   listAction.jsp 에서 pageContext 객체를 사용하여 listView.jsp로 요청이 전달되었기 때문에
+		   pageContext.request 로 합니다.
+		   
+		   pageContext 객체(jsp내장객체) : jsp 파일(jsp페이지) 1개와 대응되는 객체.
+		   
+		-->
 
 
 
