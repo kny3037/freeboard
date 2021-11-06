@@ -17,12 +17,12 @@ function post_data() {
 </head>
 <body>
 <section>
-<c:if test="${sessionScope.user==null }">
+<%-- <c:if test="${sessionScope.user==null }">
 	<script type="text/javascript">
 		alert('글쓰기는 로그인을 해야합니다.');
 		location.href='login.do';   //community 폴더 위로 이동한 위치의 loginView.jsp
 	</script>
-</c:if> 
+</c:if>  --%>
 <h3>동아리 커뮤니티 글 쓰기</h3>
 <hr>
 <form name="frm1" method="post" action="save.do">

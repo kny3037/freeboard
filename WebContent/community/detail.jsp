@@ -30,7 +30,6 @@
 					<li>${bean.readCount}</li>
 				</ul>
 			</li>
-			<li>
 				<ul class="row">
 					<li>작성자</li>
 					<li>${bean.name}<span
@@ -131,7 +130,7 @@
 			</div>
 		</div>
 	</div>
-	</section>
+	</section>  <!-- 19번라인 section 끝 -->
 	
 <%@ include file="../bottom.jsp" %>
 <!-- 모달 끝 -->
@@ -171,6 +170,7 @@
 			alert('댓글 삭제 취소합니다.');
 		}
 	}
+	
 </script>
 <%@ include file="../bottom.jsp" %>
 </body>
